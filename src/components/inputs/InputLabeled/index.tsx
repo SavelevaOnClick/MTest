@@ -10,7 +10,7 @@ const animatedConfig = {
   duration: 300,
 };
 type TProps = {
-  label: string;
+  label?: string;
   value: string;
   onChangeText?: (value: string) => void;
   onFocus?: () => void;
@@ -27,6 +27,9 @@ const LabeledInput: React.ForwardRefRenderFunction<TI, TProps> = (TProps, ref) =
   const _editable = TProps.editable ?? true;
   const labelFontSize = useSharedValue(16);
   const labelTop = useSharedValue(16);
+
+  const inputStyle = useMemo(() => [styles.input, {height: TProps.label ? 38 : 58}], [TProps.label]);
+
   const containerStyle = useMemo(
     () => [styles.container, TProps.inputStyle ? TProps.inputStyle : {}],
     [TProps.inputStyle],
@@ -70,16 +73,18 @@ const LabeledInput: React.ForwardRefRenderFunction<TI, TProps> = (TProps, ref) =
 
   return (
     <View style={containerStyle}>
-      <Animated.View style={LabelViewStyle}>
-        <Animated.Text style={LabelStyle}>{TProps.label}</Animated.Text>
-      </Animated.View>
+      {TProps.label ? (
+        <Animated.View style={LabelViewStyle}>
+          <Animated.Text style={LabelStyle}>{TProps.label}</Animated.Text>
+        </Animated.View>
+      ) : null}
       <View style={styles.inputContainer}>
         <TextInput
           ref={ref}
           {...TProps}
           onChangeText={TProps.onChangeText}
           keyboardType={TProps.keyboardType ?? 'default'}
-          style={styles.input}
+          style={inputStyle}
           numberOfLines={1}
           multiline={false}
           onFocus={onFocusHandler}

@@ -61,7 +61,7 @@ const SupportModal: React.FC<TProps> = () => {
             <Text style={styles.description}>Ми завжди раді допомогти:</Text>
           </View>
           <View style={styles.flexContainer}>
-            <Pressable onPress={onPressCallPhone} style={{marginBottom: 8}}>
+            <Pressable onPress={onPressCallPhone}>
               <Text style={styles.phoneNumber}>{mask(SUPPORT_PHONE, '+99 (999) 999 99 99')}</Text>
             </Pressable>
             <Text style={styles.phoneDescription}>Працюємо з 7:00 до 23:00</Text>

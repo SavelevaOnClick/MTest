@@ -4,7 +4,6 @@ import {Calendar, Modal} from '@components';
 import {height, width} from '@constants';
 import {useMemo, useCallback} from '@hooks';
 import {DateData} from '@types';
-import styles from './styles';
 
 const MOMENT_FORMAT = 'YYYY-MM-DD';
 type TProps = {

@@ -56,6 +56,7 @@ export default StyleSheet.create({
   phoneDescription: {
     color: '#6D6F79',
     fontSize: 16,
+    marginTop: 8
   },
   messengersDescription: {
     textAlign: 'center',

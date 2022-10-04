@@ -1,4 +1,4 @@
-import { Point } from "@types";
+import {Point} from '@types';
 
 export enum EInputTypes {
   CALENDAR = 'Calendar',
@@ -6,6 +6,7 @@ export enum EInputTypes {
   SCAN = 'Scan',
   LOCATION = 'Location',
   DELETE = 'Close',
+  ARROW_RIGHT = 'Chevron-Right'
 }
 
 export enum EGender {
@@ -19,9 +20,9 @@ export type genderData = {
   data: EGender;
 };
 
-export enum EMessenger  {
-    TELEGRAM = 'http://t.me/+3',
-    VIBER = 'viber://chat?number=%2B',
+export enum EMessenger {
+  TELEGRAM = 'http://t.me/+3',
+  VIBER = 'viber://chat?number=%2B',
 }
 
 export type TAddressData = {
@@ -33,3 +34,25 @@ export enum EAddress {
   FROM = 'from',
   TO = 'to',
 }
+
+export type TFuels = 'ДТ' | '95' | '92' | 'ГАЗ';
+
+export type TFuelData = {
+  id: number;
+  name: string;
+};
+
+export type TRegion = {
+  region: string;
+}
+
+export type TFillingStationData = {
+  id: number;
+  image: string;
+  long: string;
+  lat: string;
+  name: string;
+  region: string;
+  address: string;
+  fuels: TFuelData[];
+};

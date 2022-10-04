@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Wrapper} from '@components';
 import {selectGlobal} from '@reducers/global';
 import {
-  Calculator,
+  FillingStationsFiltersSubRegions,
   Onboarding, // ADD NEW SCREEN
 } from '@screens';
 import {navigationRef, onStateChange} from '@services';

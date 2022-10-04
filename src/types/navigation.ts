@@ -3,6 +3,8 @@ import { TAddressData } from './components';
 
 export type RootStackParamList = {
   // SCREEN PARAMS
+FillingStationsFiltersSubRegions: undefined
+FillingStationsFiltersMain: undefined
 Calculator: {
   addressFrom: TAddressData,
   addressTo: TAddressData,
@@ -16,6 +18,8 @@ TechnicalSupport: undefined
   Home: undefined;
 };
 // EXPORT SCREEN PARAMS
+export type FillingStationsFiltersSubRegionsRouteProp = RouteProp<RootStackParamList, 'FillingStationsFiltersSubRegions'>;
+export type FillingStationsFiltersMainRouteProp = RouteProp<RootStackParamList, 'FillingStationsFiltersMain'>;
 export type CalculatorRouteProp = RouteProp<RootStackParamList, 'Calculator'>;
 export type SignUpMarshalCardRouteProp = RouteProp<RootStackParamList, 'SignUpMarshalCard'>;
 export type SignUpPersonalDataRouteProp = RouteProp<RootStackParamList, 'SignUpPersonalData'>;

@@ -1,0 +1,1 @@
+export {default as GradientListFooter} from './GradientListFooter';

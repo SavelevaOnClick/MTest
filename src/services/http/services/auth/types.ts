@@ -7,6 +7,6 @@ export interface ILoginRequest {
 
 export interface ILoginResponse extends IFormatResponse {
   data: {
-   
+    
   };
 }

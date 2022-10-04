@@ -12,7 +12,6 @@ export const checkCameraPermission = async () => {
   };
 
   export const checkGeolocationPermission = async () => {
-    console.log('here')
     let result = await check(ios ? PERMISSIONS.IOS.LOCATION_ALWAYS : PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
     if (result !== 'granted') {
       result = await request(ios ? PERMISSIONS.IOS.LOCATION_ALWAYS : PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);

@@ -1,3 +1,5 @@
+import { TFillingStationData, TFuelData, TRegion } from "./components";
+
 export enum EDataLoadingStatus {
 	 IDLE = 'idle',
 	 LOADING = 'loading',
@@ -15,5 +17,12 @@ export type TGlobalState = {
 	  loading: boolean;
 	  currentRouteName: string;
 	  visibleSupportModal: boolean;
+	},
+	fillingStations: {
+		stations: TFillingStationData[],
+		searchValue: string,
+		regions: TRegion[],
+		searchFuels: TFuelData[],
+		searchRegions: string[],
 	}
 }

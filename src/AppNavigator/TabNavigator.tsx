@@ -1,21 +1,42 @@
-import React from 'react';
-import {useCallback} from '@hooks';
+import React, {useCallback, useEffect} from 'react';
 import {BottomTabBarProps, createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {TabBar} from '@components';
+import {MainActivityIndicator, TabNavBar, View} from '@components';
+import {useAppDispatch, useAppSelector} from '@hooks';
+import {initial, setLoading} from '@reducers/additional';
 import {CalculatorStackNavigator} from './stacks/calculatorNavigator';
-import {HomeStackNavigator} from './stacks/homeNavigator';
+import {FillingStationsStackNavigator} from './stacks/fillingStationsNavigator';
 
 const TabStack = createBottomTabNavigator();
 
 type TProps = {};
 
 const TabNavigator: React.FC<TProps> = () => {
-  const tabBarRender = useCallback((prop: BottomTabBarProps) => <TabBar {...prop} />, []);
+  const dispatch = useAppDispatch();
+  const {token} = useAppSelector(state => state.global);
+  const {loading} = useAppSelector(state => state.additional);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(initial());
+      // dispatch(setLoading(false))
+    }
+  }, [token]);
+
+  const tabBarRender = useCallback(
+    (prop: BottomTabBarProps) => (prop.state.routes[prop.state.index].state?.index ? null : <TabNavBar {...prop} />),
+    [],
+  );
   return (
-    <TabStack.Navigator initialRouteName={'MainStack'} screenOptions={{headerShown: false}} tabBar={tabBarRender}>
-      <TabStack.Screen name={'HomeNavigator'} component={HomeStackNavigator} />
-      <TabStack.Screen name={'CalculatorStackNavigator'} component={CalculatorStackNavigator} />
-    </TabStack.Navigator>
+    <>
+      {loading ? (
+        <MainActivityIndicator />
+      ) : (
+        <TabStack.Navigator initialRouteName={'MainStack'} tabBar={tabBarRender} screenOptions={{headerShown: false}}>
+          <TabStack.Screen name={'FillingStationsStack'} component={FillingStationsStackNavigator} />
+          <TabStack.Screen name={'CalculatorStack'} component={CalculatorStackNavigator} />
+        </TabStack.Navigator>
+      )}
+    </>
   );
 };
 

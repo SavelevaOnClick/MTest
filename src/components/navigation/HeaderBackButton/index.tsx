@@ -4,10 +4,13 @@ import {colors} from '@constants';
 import {useCallback} from '@hooks';
 import {goBack} from '@services';
 
-const HeaderBackButton: React.FC = () => {
+type TProps = {
+  onPress?: () => void;
+};
+const HeaderBackButton: React.FC<TProps> = ({onPress}) => {
   const onPressBack = useCallback(() => goBack(), []);
   return (
-    <Pressable onPress={onPressBack}>
+    <Pressable onPress={onPress ?? onPressBack}>
       <Icon name="Chevron-Left" color={colors.white_FFFFFF} size={24} />
     </Pressable>
   );

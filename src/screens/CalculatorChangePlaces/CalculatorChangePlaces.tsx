@@ -47,7 +47,7 @@ const CalculatorChangePlaces: React.FC = () => {
       }
       type === EAddress.FROM
         ? setAddressFrom({...addressFrom, address: text})
-        : setAddressTo({...addressFrom, address: text});
+        : setAddressTo({...addressTo, address: text});
     },
     [addressFrom, addressTo],
   );
@@ -89,7 +89,7 @@ const CalculatorChangePlaces: React.FC = () => {
 
   const disabledMainButton = useMemo(
     () => !addressFrom.location || !addressTo.location || !fuelConsumption,
-    [addressFrom, addressTo, fuelConsumption],
+    [addressFrom.location, addressTo.location, fuelConsumption],
   );
 
   const onPressCalculate = useCallback(() => {

@@ -39,18 +39,22 @@ export {default as DropShadow} from 'react-native-drop-shadow';
 export { TabActions } from '@react-navigation/native';
 export { scanBarcodes, BarcodeFormat } from "vision-camera-code-scanner";
 export  {mask} from 'react-native-mask-text';
+export {SceneMap, TabView, TabBar} from 'react-native-tab-view';
 
 // BEHAVIOR
 
 // BUTTONS
 export {default as MainButton} from './button/MainButton';
+export {default as SubButton} from './button/SubButton';
 // CONTROL
-
+export {default as Tabs} from './control/Tabs';
+export {default as MainActivityIndicator} from './control/MainActivityIndicator';
 // DATAVIEW
 
 // INPUTS
 export {default as CheckBox} from './inputs/CheckBox';
 export {default as LabeledInput} from './inputs/InputLabeled';
+export {default as CheckBoxFilters} from './inputs/CheckBoxFilters';
 // LAYOUT
 export {KeyboardAvoidingView} from './layout/KeyboardAvoidingView/KeyboardAvoidingView';
 export {default as Wrapper} from './layout/Wrapper';
@@ -60,8 +64,9 @@ export {default as CalendarModal} from './modal/CalendarModal';
 export {default as GenderModal} from './modal/GenderModal';
 export {default as ScanModal} from './modal/ScanModal';
 export {default as SupportModal} from './modal/SupportModal';
+export {default as FillingStationInfoModal} from './modal/FillingStationInfoModal';
 // NAVIGATION
-export {default as TabBar} from './navigation/TabBar';
+export {default as TabNavBar} from './navigation/TabBar';
 export {default as HeaderBackButton} from './navigation/HeaderBackButton';
 export {default as HeaderRightSupportButton} from './navigation/HeaderRightSupportButton';
 // TYPOGRAPHY

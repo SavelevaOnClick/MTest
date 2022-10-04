@@ -15,9 +15,10 @@ type TProps = {
   title: string;
   onPress: () => void;
   buttonStyle?: StyleProp<ViewStyle>;
+  children?: React.ReactNode;
 };
 
-const MainButton: React.FC<TProps> = ({title, onPress, disabled = false, buttonStyle = {}}) => {
+const MainButton: React.FC<TProps> = ({title, onPress, disabled = false, buttonStyle = {}, children}) => {
   const buttonContainerStyle = useMemo(() => [styles.container, buttonStyle], [buttonStyle]);
 
   return (
@@ -25,7 +26,8 @@ const MainButton: React.FC<TProps> = ({title, onPress, disabled = false, buttonS
       start={START}
       style={buttonContainerStyle}
       colors={disabled ? gradients.main_button_disabled : gradients.main_button}>
-      <Pressable disabled={disabled} onPress={onPress}>
+      <Pressable disabled={disabled} onPress={onPress} style={styles.contentContainer}>
+        {children}
         <Text style={styles.title}>{title}</Text>
       </Pressable>
     </LinearGradient>

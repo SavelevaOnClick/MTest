@@ -11,4 +11,6 @@ export const colors = {
   green_icon_00AE36: '#00AE36',
   grey_shadow_AFAFAF: '#AFAFAF',
   black_tab_bar_2D2D2D: '#2D2D2D',
+  grey_light_background_E5E5E5: '#E5E5E5',
+  grey_check_box_DADBDF: "#DADBDF",
 };

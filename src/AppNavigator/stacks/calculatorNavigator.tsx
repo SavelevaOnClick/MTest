@@ -26,7 +26,7 @@ export const CalculatorStackNavigator: React.FC = () => {
         component={Calculator}
         options={{
           title: 'Калькулятор пального',
-          headerLeft: HeaderBackButton,
+          headerLeft: () => <HeaderBackButton />,
         }}
       />
     </CalculatorStack.Navigator>

@@ -1,6 +1,8 @@
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
-import {AppDispatch, RootSate} from '../store';
+import {AppDispatch, RootState} from '../store';
 
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 // https://reactjs.org/docs/hooks-reference.html
 export {
   useState,
@@ -36,10 +38,11 @@ export {
   useTranslation, // const { t, i18n } = useTranslation();
 } from 'react-i18next';
 
-export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const useAppSelector: TypedUseSelectorHook<RootSate> = useSelector;
+
 
 export {default as useScanBarcodes} from './useScanBarcodes';
 
 export {useAnimatedStyle, useSharedValue} from 'react-native-reanimated';
 export {useBlurOnFulfill, useClearByFocusCell} from 'react-native-confirmation-code-field';
+
+export {useFind, useFormattedRegionsValue} from './useFind';

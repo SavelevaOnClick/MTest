@@ -10,6 +10,8 @@ module.exports = [
     message: "Select screen folder...",
     choices: [
       //ADD MORE SCREENS
+      'FillingStationsFiltersSubRegions',
+      'FillingStationsFilters',
       'Calculator',
       'Calculator',
       'SignUpMarshalCard',

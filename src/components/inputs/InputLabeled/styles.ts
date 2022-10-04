@@ -15,7 +15,6 @@ export default StyleSheet.create({
     justifyContent: 'flex-end',
   },
   input: {
-    height: 38,
     width: '100%',
     fontSize: 16,
     padding: 0,

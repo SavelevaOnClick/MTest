@@ -7,7 +7,6 @@ import styles from '../styles';
 const AuthStack = createNativeStackNavigator();
 
 export const AuthNavigator: React.FC = () => {
-
   return (
     <AuthStack.Navigator
       screenOptions={{
@@ -29,7 +28,7 @@ export const AuthNavigator: React.FC = () => {
         component={SignUpPersonalData}
         options={{
           headerRight: HeaderRightSupportButton,
-          headerLeft: HeaderBackButton,
+          headerLeft: () => <HeaderBackButton />,
         }}
       />
       <AuthStack.Screen
@@ -37,7 +36,7 @@ export const AuthNavigator: React.FC = () => {
         component={SignUpMarshalCard}
         options={{
           headerRight: HeaderRightSupportButton,
-          headerLeft: HeaderBackButton,
+          headerLeft: () => <HeaderBackButton />,
         }}
       />
     </AuthStack.Navigator>

@@ -18,7 +18,8 @@ const SignUpMarshalCard: React.FC = () => {
   const disabled = useMemo(() => !isNewCard && !card.length, [card, isNewCard]);
 
   const onPressContinue = useCallback(() => {
-    dispatch(setToken(card));
+    dispatch(setToken('120|0zq4snXg3UXN8q7g8bPKbwaG7nLTRziyfWeDvOVj'))
+    
   }, [card]);
 
   const onPressCardScan = useCallback(async () => {

@@ -1,14 +1,22 @@
 import i18next from 'i18next';
-import {createSlice} from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {TGlobalState} from '@types';
+import {getFillingStationsAsync, getRegionsAsync} from './fillingStations';
 
 type TInitialState = TGlobalState['additional'];
 
 const initialState: TInitialState = {
-  loading: false,
+  loading: true,
   currentRouteName: '',
   visibleSupportModal: false,
 };
+
+export const initial = createAsyncThunk('@@additional/initial', async (_, thunkAPI) => {
+  await Promise.all([
+    thunkAPI.dispatch(getFillingStationsAsync({locale: 'ru'})),
+    thunkAPI.dispatch(getRegionsAsync()),
+  ]);
+});
 
 const additionalSlice = createSlice({
   name: '@@additional',
@@ -24,6 +32,15 @@ const additionalSlice = createSlice({
       state.currentRouteName = action.payload;
     },
     resetAdditional: () => initialState,
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(initial.fulfilled, (state, action) => {
+        state.loading = false;
+      })
+      .addCase(initial.rejected, (state, action) => {
+        state.loading = false;
+      });
   },
 });
 
