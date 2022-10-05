@@ -9,12 +9,12 @@ const TAB_NAV = [
   {
     icon: 'Map',
     title: 'Наші АЗК',
-    navigate: 'FillingStationsStack',
+    navigate: 'FillingStations',
   },
   {
     icon: 'Document',
     title: 'Головна',
-    navigate: 'CalculatorStack',
+    navigate: 'CalculatorChangePlaces',
   },
 ];
 
@@ -31,12 +31,6 @@ const TabBar: React.FC<BottomTabBarProps> = props => {
     },
     [],
   );
-
-  // if (state.routes[activeIndex] && 
-  //   state.routes[activeIndex].state?.index
-  // ) {
-  //   return null;
-  // }
 
   return (
     <DropShadow style={styles.shadow}>

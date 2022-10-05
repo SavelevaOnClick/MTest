@@ -17,3 +17,4 @@ export type {
 export  type {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 export type {MapDirectionsResponse} from 'react-native-maps-directions';
 export  type {NavigationState, SceneRendererProps, Scene} from 'react-native-tab-view/lib/typescript/types';
+export type {LatLng} from 'react-native-maps';

@@ -1,5 +1,3 @@
-
-
 export {
   ActivityIndicator,
   Alert,
@@ -36,10 +34,12 @@ export {default as Geolocation} from 'react-native-geolocation-service';
 export {default as MapViewDirections} from 'react-native-maps-directions';
 export {showLocation} from 'react-native-map-link';
 export {default as DropShadow} from 'react-native-drop-shadow';
-export { TabActions } from '@react-navigation/native';
-export { scanBarcodes, BarcodeFormat } from "vision-camera-code-scanner";
-export  {mask} from 'react-native-mask-text';
+export {TabActions} from '@react-navigation/native';
+export {scanBarcodes, BarcodeFormat} from 'vision-camera-code-scanner';
+export {mask} from 'react-native-mask-text';
 export {SceneMap, TabView, TabBar} from 'react-native-tab-view';
+export {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+export {default as Map} from 'react-native-map-clustering';
 
 // BEHAVIOR
 

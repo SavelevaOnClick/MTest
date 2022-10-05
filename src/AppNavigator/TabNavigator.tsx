@@ -1,10 +1,10 @@
 import React, {useCallback, useEffect} from 'react';
 import {BottomTabBarProps, createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {MainActivityIndicator, TabNavBar, View} from '@components';
+import {MainActivityIndicator, TabNavBar} from '@components';
 import {useAppDispatch, useAppSelector} from '@hooks';
-import {initial, setLoading} from '@reducers/additional';
-import {CalculatorStackNavigator} from './stacks/calculatorNavigator';
-import {FillingStationsStackNavigator} from './stacks/fillingStationsNavigator';
+import {initial} from '@reducers/additional';
+import {CalculatorChangePlaces, FillingStations} from '@screens';
+import styles from './styles';
 
 const TabStack = createBottomTabNavigator();
 
@@ -18,22 +18,31 @@ const TabNavigator: React.FC<TProps> = () => {
   useEffect(() => {
     if (token) {
       dispatch(initial());
-      // dispatch(setLoading(false))
     }
   }, [token]);
 
-  const tabBarRender = useCallback(
-    (prop: BottomTabBarProps) => (prop.state.routes[prop.state.index].state?.index ? null : <TabNavBar {...prop} />),
-    [],
-  );
+  const tabBarRender = useCallback((prop: BottomTabBarProps) => <TabNavBar {...prop} />, []);
   return (
     <>
       {loading ? (
         <MainActivityIndicator />
       ) : (
-        <TabStack.Navigator initialRouteName={'MainStack'} tabBar={tabBarRender} screenOptions={{headerShown: false}}>
-          <TabStack.Screen name={'FillingStationsStack'} component={FillingStationsStackNavigator} />
-          <TabStack.Screen name={'CalculatorStack'} component={CalculatorStackNavigator} />
+        <TabStack.Navigator
+          initialRouteName={'MainStack'}
+          tabBar={tabBarRender}
+          screenOptions={{
+            headerStyle: styles.headerStyle,
+            headerTitleStyle: styles.headerTitleStyle,
+            headerTitleAlign: 'center',
+          }}>
+          <TabStack.Screen name={'FillingStations'} component={FillingStations} options={{headerShown: false}} />
+          <TabStack.Screen
+            name={'CalculatorChangePlaces'}
+            component={CalculatorChangePlaces}
+            options={{
+              title: 'Калькулятор пального',
+            }}
+          />
         </TabStack.Navigator>
       )}
     </>

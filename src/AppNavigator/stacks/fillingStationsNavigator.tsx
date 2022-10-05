@@ -14,9 +14,8 @@ export const FillingStationsStackNavigator: React.FC = () => {
         headerTitleStyle: styles.headerTitleStyle,
         headerTitleAlign: 'center',
       }}>
-      <FillingStationsStack.Screen name="FillingStations" component={FillingStations} options={{headerShown: false}} />
       <FillingStationsStack.Screen
-        name="FillingStationsFilters"
+        name="FillingStationsFiltersMain"
         component={FillingStationsFiltersMain}
         options={{
           title: 'Фільтри',

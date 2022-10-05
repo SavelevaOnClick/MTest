@@ -9,7 +9,7 @@ import styles from './styles';
 const Calculator: React.FC = () => {
   const {t} = useTranslation();
   const {params} = useRoute<CalculatorRouteProp>();
-
+ console.log(params, 'rrr')
   const onPressBuyFuel = useCallback(() => {}, []);
 
   return (

@@ -1,15 +1,14 @@
 import {MAP_KEY} from '@env';
 import {checkGeolocationPermission} from '@utils';
 import React from 'react';
-import Map from 'react-native-map-clustering';
-import MapView, {Marker, PROVIDER_GOOGLE, Region} from 'react-native-maps';
-import {FillingStationInfoModal, Geolocation, Geocoder, Alert} from '@components';
+import MapView, {Region} from 'react-native-maps';
+import {FillingStationInfoModal, Geolocation, Geocoder, Alert, PROVIDER_GOOGLE, Map} from '@components';
 import {height, width} from '@constants';
-import {useState, useRef, useAppSelector, useFind, useEffect} from '@hooks';
+import {useState, useRef, useAppSelector, useFind, useEffect, useMemo, useCallback} from '@hooks';
 import {TFillingStationData} from '@types';
-import styles from '../../styles';
-import MapMarker from '../MapMarker';
+import CustomMarker from '../CustomMarker';
 import TabMapBar from '../TabMapBar';
+import styles from './styles';
 
 type TProps = {};
 const initialRegion = {
@@ -27,7 +26,6 @@ const StationsMap: React.FC<TProps> = () => {
   const {searchValue, searchFuels, searchRegions} = useAppSelector(state => state.fillingStations);
   const fillingStationsData = useFind(searchValue, searchFuels, searchRegions);
   const mapRef = useRef<MapView>(null);
-
 
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [region, setRegion] = useState<Region>(initialRegion);
@@ -93,6 +91,23 @@ const StationsMap: React.FC<TProps> = () => {
     setSelectedFillingStation(fillingData);
   };
 
+  const markers = useMemo(
+    () =>
+      fillingStationsData.map(station => (
+        <CustomMarker
+          key={station.name}
+          onPressHandler={onPressMarker(station)}
+          coordinate={{
+            latitude: +station.lat,
+            longitude: +station.long,
+          }}
+        />
+      )),
+    [fillingStationsData, region],
+  );
+
+  const onRegionChangeComplete = useCallback((props: Region) => setRegion(props), []);
+
   return (
     <>
       <Map
@@ -100,21 +115,10 @@ const StationsMap: React.FC<TProps> = () => {
         style={styles.container}
         ref={mapRef}
         maxZoom={17}
-        animationEnabled
-        onRegionChangeComplete={props => setRegion(props)}
+        minZoom={2}
+        onRegionChangeComplete={onRegionChangeComplete}
         provider={PROVIDER_GOOGLE}>
-        {fillingStationsData.map(station => (
-          <Marker
-            coordinate={{
-              latitude: +station.lat,
-              longitude: +station.long,
-            }}
-            // tracksViewChanges={false}
-            onPress={onPressMarker(station)}
-            key={station.address}>
-            <MapMarker />
-          </Marker>
-        ))}
+        {markers}
       </Map>
       <TabMapBar mapZoomIn={mapZoomIn} mapZoomOut={mapZoomOut} currentGeolocation={getLocation} />
       <FillingStationInfoModal

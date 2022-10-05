@@ -1,12 +1,12 @@
 import {StyleSheet} from 'react-native';
-import {colors, width} from '@constants';
+import {colors, ios, width} from '@constants';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
     zIndex: 1000,
-    paddingTop: 16,
+    paddingTop:  !ios ? 32 : 0,
   },
   flexContainer: {
     flex: 1,

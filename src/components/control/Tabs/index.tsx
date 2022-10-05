@@ -33,7 +33,7 @@ const Tabs: React.FC<TProps> = ({FirstTabComponent, SecondTabComponent, firstTit
   });
 
   const onPressIcon = () => {
-    navigate('FillingStationsFilters');
+    navigate('FillingStationsStackNavigator');
   };
 
   const TabItemCustom = useCallback(

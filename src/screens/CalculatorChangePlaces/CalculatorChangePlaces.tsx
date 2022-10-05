@@ -93,6 +93,7 @@ const CalculatorChangePlaces: React.FC = () => {
   );
 
   const onPressCalculate = useCallback(() => {
+    console.log(addressFrom, addressTo)
     navigate('Calculator', {
       addressFrom,
       addressTo,
